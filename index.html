@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minicurso Anúncios com Avatares de IA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js for interactions (like video modal) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>
+        /* Custom styles to apply the fonts and create engaging effects */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        h1, h2, h3, h4, h5, h6, .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px 0 rgba(4, 255, 129, 0.4);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 25px 0 rgba(45, 255, 129, 0.6);
+        }
+        .faq-item summary {
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s ease;
+        }
+        .faq-item[open] summary {
+            background-color: #374151; /* bg-gray-700 */
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="text-white antialiased">
+
+    <!-- Section 1: The "Above the Fold" Hook -->
+    <header x-data="{ videoOpen: false }" class="bg-gray-900 text-center py-16 md:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-gray-800 [mask-image:linear-gradient(to_bottom,white_5%,transparent_80%)]"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">Crie Anúncios com Avatares de IA <br class="hidden md:block"/><span class="text-green-400">que Vendem por Você 24/7</span></h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">O minicurso prático para você criar, do zero, vídeos de alto impacto com Inteligência Artificial — <span class="font-bold">mesmo sem ser designer e usando apenas ferramentas gratuitas.</span></p>
+            
+            <!-- Visual Hook: Mockup com Vídeo -->
+            <div @click="videoOpen = true" class="mt-10 mx-auto max-w-4xl p-2 bg-gray-800 rounded-2xl shadow-2xl cursor-pointer group">
+                 <div class="relative rounded-lg overflow-hidden">
+                    <img src="https://placehold.co/1200x675/1f2937/ffffff?text=Demonstração+do+Resultado" alt="Demonstração de um vídeo criado com avatar de IA" class="w-full">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                        <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                            <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M4 3.25v13.5l12-6.75L4 3.25z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+            <a href="#oferta" class="cta-button mt-12 bg-green-500 text-gray-900 font-bold uppercase py-4 px-10 rounded-lg text-xl inline-block">
+                QUERO CRIAR MEUS ANÚNCIOS COM IA AGORA
+            </a>
+            
+            <!-- Trust Signals -->
+            <div class="mt-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-gray-400">
+                <span class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Acesso Imediato e Vitalício</span>
+                <span class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>100% Prático e Direto ao Ponto</span>
+                <span class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Pagamento Seguro</span>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div x-show="videoOpen" x-transition @click.away="videoOpen = false" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+            <div @click.stop class="bg-black rounded-lg w-full max-w-4xl aspect-video relative">
+                 <button @click="videoOpen = false" class="absolute -top-3 -right-3 text-white bg-gray-800 rounded-full w-8 h-8 flex items-center justify-center z-10">&times;</button>
+                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: Agitating the Pain, Presenting the Dream -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6 max-w-5xl grid md:grid-cols-2 gap-12 items-center">
+            <!-- The Problem -->
+            <div class="bg-gray-900 p-8 rounded-xl border border-red-500/30">
+                <h3 class="text-3xl font-bold mb-6 text-center font-montserrat">Isso soa familiar?</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-red-400 mr-3 text-2xl">×</span><span>Você passa horas criando conteúdo que, no final, tem <strong>pouco ou nenhum alcance?</strong></span></li>
+                    <li class="flex items-start"><span class="text-red-400 mr-3 text-2xl">×</span><span>Sente que seus anúncios não se destacam e são <strong>completamente ignorados</strong> no feed?</span></li>
+                    <li class="flex items-start"><span class="text-red-400 mr-3 text-2xl">×</span><span>Não tem habilidade (ou paciência) com design e acha que criar vídeos é <strong>um bicho de sete cabeças?</strong></span></li>
+                    <li class="flex items-start"><span class="text-red-400 mr-3 text-2xl">×</span><span>Acredita que contratar um profissional ou comprar softwares caros é a única solução (e isso está <strong>fora do seu orçamento</strong>)?</span></li>
+                </ul>
+                <p class="mt-6 text-sm text-center text-gray-400">Se você marcou "sim", saiba que a culpa não é sua. O jogo da atenção online está cada vez mais competitivo.</p>
+            </div>
+
+            <!-- The Dream -->
+            <div class="bg-gray-900 p-8 rounded-xl border border-green-500/30">
+                <h3 class="text-3xl font-bold mb-6 text-center font-montserrat">Agora, imagine se...</h3>
+                 <ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-green-400 mr-3 text-2xl font-bold">✔</span><span>Pudesse criar anúncios com aparência profissional <strong>em minutos</strong>, usando simples comandos de texto.</span></li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3 text-2xl font-bold">✔</span><span>Tivesse um "ator digital" trabalhando para sua marca <strong>24 horas por dia</strong>, sem nunca se cansar.</span></li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3 text-2xl font-bold">✔</span><span>Capturasse a <strong>atenção imediata</strong> do seu público com uma comunicação inovadora que ninguém mais está usando.</span></li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3 text-2xl font-bold">✔</span><span>Fizesse tudo isso <strong>sem gastar um único centavo</strong> com ferramentas complexas ou freelancers.</span></li>
+                </ul>
+                 <p class="mt-6 text-center font-bold text-green-400">Essa é a nova e muito mais inteligente forma de jogar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2.5: The Solution -->
+    <section class="py-16 text-center">
+        <div class="container mx-auto px-6 max-w-4xl">
+             <p class="text-lg text-gray-300">Essa não é uma realidade distante. É exatamente isso que você vai conquistar com o minicurso prático:</p>
+             <h2 class="text-5xl font-black mt-4 font-montserrat">Anúncios com Avatares de IA</h2>
+        </div>
+    </section>
+
+    <!-- Section 3: The Transformation Engine -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold font-montserrat">Sua Jornada de Transformação, Passo a Passo</h2>
+                <p class="mt-4 text-lg text-gray-300">Este não é um curso teórico. É um workshop prático, direto ao ponto, dividido em 4 módulos que te levam do zero absoluto a um anúncio profissional pronto para ser publicado.</p>
+            </div>
+            
+            <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Module 1 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
+                    <div class="text-green-400 text-2xl font-black mb-2">Módulo 1</div>
+                    <h3 class="text-xl font-bold mb-3 font-montserrat">O Poder dos Prompts</h3>
+                    <p class="text-gray-400 text-sm mb-4"><strong>O que você vai dominar:</strong> A arte de dar instruções perfeitas para a IA, usando a Fórmula dos 4 Componentes para criar prompts de nível profissional.</p>
+                    <p class="font-bold text-sm text-green-400 border-t border-gray-700 pt-3 mt-4"><strong>Resultado prático:</strong> Seu "prompt mestre" em mãos, a chave para criar um avatar consistente e de alta qualidade.</p>
+                </div>
+                <!-- Module 2 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
+                    <div class="text-green-400 text-2xl font-black mb-2">Módulo 2</div>
+                    <h3 class="text-xl font-bold mb-3 font-montserrat">A Fábrica de Avatares</h3>
+                    <p class="text-gray-400 text-sm mb-4"><strong>O que você vai dominar:</strong> O uso de 3 ferramentas gratuitas para gerar, refinar e garantir a consistência do seu ator digital.</p>
+                     <p class="font-bold text-sm text-green-400 border-t border-gray-700 pt-3 mt-4"><strong>Resultado prático:</strong> A imagem "matriz" perfeita do seu avatar, pronta para ganhar vida.</p>
+                </div>
+                <!-- Module 3 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
+                    <div class="text-green-400 text-2xl font-black mb-2">Módulo 3</div>
+                    <h3 class="text-xl font-bold mb-3 font-montserrat">O Sopro Digital</h3>
+                    <p class="text-gray-400 text-sm mb-4"><strong>O que você vai dominar:</strong> Como escrever roteiros curtos que convertem (estrutura AIDA) e como transformar texto em voz e animar seu avatar.</p>
+                     <p class="font-bold text-sm text-green-400 border-t border-gray-700 pt-3 mt-4"><strong>Resultado prático:</strong> Seu primeiro vídeo bruto do avatar falante, pronto para a lapidação final.</p>
+                </div>
+                <!-- Module 4 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700">
+                    <div class="text-green-400 text-2xl font-black mb-2">Módulo 4</div>
+                    <h3 class="text-xl font-bold mb-3 font-montserrat">A Edição Final</h3>
+                    <p class="text-gray-400 text-sm mb-4"><strong>O que você vai dominar:</strong> Técnicas simples no CapCut para adicionar legendas dinâmicas, trilha sonora e exportar no formato perfeito.</p>
+                     <p class="font-bold text-sm text-green-400 border-t border-gray-700 pt-3 mt-4"><strong>Resultado prático:</strong> Seu vídeo 100% finalizado, um ativo de marketing poderoso pronto para publicar.</p>
+                </div>
+            </div>
+            
+            <!-- Tools Section -->
+            <div class="mt-20 max-w-4xl mx-auto text-center">
+                <h3 class="text-3xl font-bold font-montserrat">Seu Arsenal Criativo (Custo: R$ 0,00)</h3>
+                <p class="mt-4 text-gray-300">Reforçamos: todo o processo é feito com ferramentas gratuitas. Nada de custos escondidos ou mensalidades.</p>
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-6 md:gap-8">
+                    <img src="https://placehold.co/120x50/374151/ffffff?text=Bing+Image" alt="Logo Microsoft Bing Image Creator" class="h-10 md:h-12" title="Bing Image Creator">
+                    <img src="https://placehold.co/120x50/374151/ffffff?text=ImageFX" alt="Logo Google ImageFX" class="h-10 md:h-12" title="Google ImageFX">
+                    <img src="https://placehold.co/120x50/374151/ffffff?text=Artflow" alt="Logo Artflow.ai" class="h-10 md:h-12" title="Artflow.ai">
+                    <img src="https://placehold.co/120x50/374151/ffffff?text=Hedra" alt="Logo Hedra" class="h-10 md:h-12" title="Hedra">
+                    <img src="https://placehold.co/120x50/374151/ffffff?text=CapCut" alt="Logo CapCut" class="h-10 md:h-12" title="CapCut">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Undeniable Proof -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold font-montserrat">Não Acredite na Nossa Palavra. Acredite nos Resultados.</h2>
+                <p class="mt-4 text-lg text-gray-300">Veja o que pessoas como você, que saíram do zero, estão criando e conquistando com o método.</p>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="mt-12 grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-effect rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/64x64/2dff81/111827?text=JS" alt="Foto de Joana Silva" class="w-16 h-16 rounded-full mr-4 border-2 border-green-400">
+                        <div>
+                            <h4 class="font-bold text-lg">Joana Silva</h4>
+                            <p class="text-sm text-gray-400">Coach de Carreira</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-green-400 italic">"Dobrei o engajamento dos meus anúncios na primeira semana!"</p>
+                    <p class="mt-4 text-gray-300"><strong class="text-red-400">Antes:</strong> "Eu travava completamente na hora de criar vídeos. Achava que precisava de uma equipe inteira. Meus anúncios passavam batido."</p>
+                    <p class="mt-2 text-gray-300"><strong class="text-green-400">Depois:</strong> "Criei meu primeiro anúncio em uma tarde. O resultado ficou mais profissional do que eu jamais imaginei e o feedback foi imediato! As pessoas param para ver."</p>
+                </div>
+                 <div class="glass-effect rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/64x64/2dff81/111827?text=MA" alt="Foto de Marcos Andrade" class="w-16 h-16 rounded-full mr-4 border-2 border-green-400">
+                        <div>
+                            <h4 class="font-bold text-lg">Marcos Andrade</h4>
+                            <p class="text-sm text-gray-400">Nutricionista</p>
+                        </div>
+                    </div>
+                    <p class="text-xl font-bold text-green-400 italic">"Finalmente consegui criar um 'rosto' para a minha marca sem gastar uma fortuna."</p>
+                    <p class="mt-4 text-gray-300"><strong class="text-red-400">Antes:</strong> "Queria passar mais credibilidade, mas tinha vergonha de aparecer. Contratar um ator era inviável para o meu orçamento."</p>
+                    <p class="mt-2 text-gray-300"><strong class="text-green-400">Depois:</strong> "Criei uma avatar especialista, séria e confiável. A consistência que aprendi a criar foi o pulo do gato. Meus agendamentos aumentaram 25%."</p>
+                </div>
+            </div>
+
+            <!-- Visual Proof Gallery -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-center font-montserrat">Veja o que Você Vai Criar</h3>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+1" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+2" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+3" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+4" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+5" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/600x600/1f2937/ffffff?text=Exemplo+6" alt="Exemplo de vídeo de aluno" class="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: The Guide -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6 max-w-4xl flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/3 text-center">
+                <img src="https://placehold.co/300x300/111827/2dff81?text=Instrutor" alt="Foto do Instrutor" class="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto shadow-2xl border-4 border-gray-700">
+            </div>
+            <div class="md:w-2/3">
+                <h2 class="text-3xl font-bold font-montserrat">Seu Guia Nesta Jornada</h2>
+                <h3 class="text-xl font-bold mt-1">Olá, eu sou [Nome do Instrutor]!</h3>
+                <p class="mt-4 text-gray-300">Por anos, eu senti a mesma frustração que você. Eu tinha um conhecimento para compartilhar, mas me sentia paralisado pela complexidade e pelo custo da criação de vídeos. Via concorrentes com produções incríveis e pensava: "Eu nunca vou competir com isso".</p>
+                <p class="mt-2 text-gray-300">Foi então que mergulhei na Inteligência Artificial Generativa. Descobri que era possível, com os comandos e as ferramentas certas (e gratuitas!), criar conteúdo de altíssimo impacto sem ser um gênio do design.</p>
+                <p class="mt-2 font-bold text-green-400">Minha missão se tornou clara: empacotar esse processo e entregá-lo de forma mastigada para outros empreendedores que, como eu, só precisam do caminho certo para destravar seu potencial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: The Irresistible Offer -->
+    <section id="oferta" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl font-black font-montserrat">Sua Oferta Irresistível</h2>
+                <p class="mt-4 text-lg text-gray-300">Ao garantir sua vaga hoje, você não leva apenas o curso. Você recebe um kit completo para se tornar um criador de anúncios de IA.</p>
+            </div>
+            
+            <div class="mt-12 max-w-2xl mx-auto bg-gray-800 border border-green-500/30 rounded-2xl shadow-2xl p-8">
+                <h3 class="font-bold text-2xl text-center mb-6">Seu Acesso Completo Inclui:</h3>
+                
+                <!-- Value Stack -->
+                <div class="space-y-4 text-left">
+                    <div class="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                        <span class="font-bold">✅ Minicurso Anúncios com Avatares de IA</span>
+                        <span class="text-gray-400">Valor: R$ 497,00</span>
+                    </div>
+                     <div class="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                        <div>
+                            <span class="font-bold text-green-400">🎁 BÔNUS #1:</span>
+                            <span class="font-bold"> Biblioteca de Prompts de Elite</span>
+                        </div>
+                        <span class="text-gray-400">Valor: R$ 197,00</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
+                         <div>
+                            <span class="font-bold text-green-400">🎁 BÔNUS #2:</span>
+                            <span class="font-bold"> Checklist de Edição Profissional</span>
+                        </div>
+                        <span class="text-gray-400">Valor: R$ 97,00</span>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400">Valor Total de Tudo o que Você Recebe:</p>
+                    <p class="text-3xl font-bold line-through text-red-400">R$ 791,00</p>
+                    
+                    <p class="mt-6 text-sm uppercase text-gray-400">Seu Investimento Hoje é de Apenas:</p>
+                    <div class="my-2">
+                        <span class="text-6xl font-black text-green-400">R$ 97</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">(ou 12x de R$ 9,74 no cartão)</p>
+                    
+                    <a href="#link-checkout" class="cta-button bg-green-500 text-gray-900 font-bold uppercase py-4 px-8 rounded-lg text-xl inline-block w-full">
+                        QUERO GARANTIR MINHA VAGA COM DESCONTO AGORA
+                    </a>
+                    <p class="text-xs text-gray-500 mt-4">Vagas com este valor são limitadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final Safety Net -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <!-- Guarantee -->
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center glass-effect rounded-2xl p-8">
+                <div class="md:w-1/3 text-center">
+                    <img src="https://placehold.co/200x200/2dff81/111827?text=7+DIAS" alt="Selo de Garantia de 7 dias" class="mx-auto w-40 h-40">
+                </div>
+                <div class="md:w-2/3 md:pl-8 mt-6 md:mt-0">
+                    <h2 class="text-3xl font-bold font-montserrat">Sua Satisfação Garantida ou Seu Dinheiro de Volta</h2>
+                    <p class="mt-4 text-lg text-gray-300">Seu risco é <strong>absolutamente ZERO</strong>. Você tem 7 dias completos para acessar o curso, assistir às aulas e colocar o método em prática. Se, por qualquer motivo, você achar que o conteúdo não é para você, basta nos enviar um único e-mail e nós devolveremos 100% do seu investimento. Sem perguntas e sem burocracia.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="mt-20 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8 font-montserrat">Perguntas Frequentes</h2>
+                <div class="space-y-4">
+                    <details class="faq-item bg-gray-900 p-4 rounded-lg">
+                        <summary class="font-bold text-lg flex justify-between items-center">Para quem é este minicurso? <span class="text-2xl font-light">+</span></summary>
+                        <p class="mt-3 pt-3 border-t border-gray-700 text-gray-400">É para empreendedores, freelancers, profissionais de marketing, criadores de conteúdo e qualquer pessoa que queira criar anúncios em vídeo de forma rápida e profissional, sem precisar de habilidades técnicas ou de um grande orçamento.</p>
+                    </details>
+                    <details class="faq-item bg-gray-900 p-4 rounded-lg">
+                        <summary class="font-bold text-lg flex justify-between items-center">As ferramentas são realmente 100% gratuitas? <span class="text-2xl font-light">+</span></summary>
+                        <p class="mt-3 pt-3 border-t border-gray-700 text-gray-400">Sim. Todas as ferramentas essenciais ensinadas no curso possuem planos gratuitos robustos que são mais do que suficientes para você criar seus anúncios sem gastar nada.</p>
+                    </details>
+                    <details class="faq-item bg-gray-900 p-4 rounded-lg">
+                        <summary class="font-bold text-lg flex justify-between items-center">Em quanto tempo terei meu primeiro vídeo pronto? <span class="text-2xl font-light">+</span></summary>
+                        <p class="mt-3 pt-3 border-t border-gray-700 text-gray-400">Seguindo o passo a passo, você pode ter seu primeiro anúncio com avatar pronto em uma tarde de trabalho.</p>
+                    </details>
+                     <details class="faq-item bg-gray-900 p-4 rounded-lg">
+                        <summary class="font-bold text-lg flex justify-between items-center">Terei acesso ao curso por quanto tempo? <span class="text-2xl font-light">+</span></summary>
+                        <p class="mt-3 pt-3 border-t border-gray-700 text-gray-400">O acesso é vitalício. Você pode assistir às aulas no seu ritmo, quantas vezes quiser, e terá acesso a todas as futuras atualizações sem custo adicional.</p>
+                    </details>
+                </div>
+            </div>
+
+             <!-- Final CTA -->
+            <div class="mt-20 max-w-3xl mx-auto text-center border-t-2 border-green-500 pt-12">
+                <h2 class="text-4xl font-black font-montserrat">A escolha é sua. Qual caminho você vai seguir?</h2>
+                <div class="mt-8 grid md:grid-cols-2 gap-8 text-left">
+                    <div class="border border-red-500/50 p-6 rounded-lg">
+                        <h4 class="font-bold text-xl">1. O Caminho de Sempre</h4>
+                        <p class="text-gray-400 mt-2">Continuar como está, lutando para se destacar, gastando tempo e energia em conteúdos que não geram o impacto que você deseja.</p>
+                    </div>
+                     <div class="border border-green-500/50 p-6 rounded-lg">
+                        <h4 class="font-bold text-xl">2. O Novo Caminho</h4>
+                        <p class="text-gray-400 mt-2">Agarrar esta oportunidade, dominar uma nova habilidade poderosa e colocar a Inteligência Artificial para trabalhar e vender por você.</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-lg">Se você está pronto para o novo caminho, sua jornada começa agora.</p>
+                <a href="#oferta" class="cta-button mt-8 bg-green-500 text-gray-900 font-bold uppercase py-4 px-10 rounded-lg text-xl inline-block">
+                    SIM, QUERO TRANSFORMAR MINHA COMUNICAÇÃO COM IA!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 text-gray-500 text-sm bg-gray-900">
+        <p>&copy; 2025 [Seu Nome ou Nome da Sua Empresa]. Todos os direitos reservados.</p>
+        <p class="mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p>
+    </footer>
+
+</body>
+</html>
