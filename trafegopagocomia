@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Tráfego Pago com IA: O Método Prático</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js for Mobile Menu & FAQ -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Applying the Inter font as the default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0A12; /* Deep dark background */
+        }
+        
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(90deg, #A855F7, #6366F1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero section background glow */
+        .hero-glow {
+            background-image: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(99, 102, 241, 0.3), rgba(11, 10, 18, 0));
+        }
+
+        /* Button styles */
+        .cta-button {
+            background: linear-gradient(90deg, #4F46E5, #818CF8);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 25px rgba(99, 102, 241, 0.4);
+        }
+        .secondary-cta {
+             background-color: rgba(255, 255, 255, 0.05);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+             transition: all 0.3s ease;
+        }
+        .secondary-cta:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Pricing table highlight */
+        .highlighted-plan {
+            border: 2px solid #6366F1;
+            transform: scale(1.05);
+        }
+
+        /* Scroll-reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-[#0B0A12] text-gray-200 antialiased">
+
+    <!-- ===== Header ===== -->
+    <header x-data="{ mobileMenuOpen: false }" class="absolute top-0 left-0 w-full z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white">Tráfego Pago com IA</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#para-quem" class="hover:text-white transition">Para Quem É</a>
+                <a href="#modulos" class="hover:text-white transition">O Método</a>
+                <a href="#pricing" class="hover:text-white transition">Inscrição</a>
+            </nav>
+            <a href="#pricing" class="hidden md:inline-block px-5 py-2 font-semibold text-white rounded-lg cta-button">Destravar Minhas Vendas</a>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden mt-4 bg-gray-900/80 backdrop-blur-lg rounded-lg mx-6 p-4">
+            <a href="#para-quem" @click="mobileMenuOpen = false" class="block py-2 text-center">Para Quem É</a>
+            <a href="#modulos" @click="mobileMenuOpen = false" class="block py-2 text-center">O Método</a>
+            <a href="#pricing" @click="mobileMenuOpen = false" class="block py-2 text-center">Inscrição</a>
+            <a href="#pricing" @click="mobileMenuOpen = false" class="block w-full text-center mt-4 px-5 py-2 font-semibold text-white rounded-lg cta-button">Destravar Minhas Vendas</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== Hero Section ===== -->
+        <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 text-center overflow-hidden">
+            <div class="absolute inset-0 hero-glow -z-10"></div>
+            <div class="container mx-auto px-6 reveal">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-white leading-tight">
+                    Faça sua marca <span class="gradient-text">dominar o digital</span> e deixe seus concorrentes para trás.
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                   O método prático para donos de negócio que estão cansados de não ver resultado e querem escalar suas vendas com anúncios inteligentes, sem depender de agências caras.
+                </p>
+                <div class="mt-8 flex justify-center">
+                    <a href="#pricing" class="px-8 py-4 font-semibold text-white rounded-lg cta-button text-lg">Quero o atalho inteligente</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== Problem / Persona Connection Section ===== -->
+        <section id="para-quem" class="py-20">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Se você vive isso no seu negócio, este método é para você:</h2>
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-left">
+                    <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                        <p><span class="text-2xl mr-2">😠</span>Sente <strong class="text-white">raiva e frustração</strong> por já ter contratado agências ou freelancers que prometeram mundos e não entregaram nada.</p>
+                    </div>
+                    <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                        <p><span class="text-2xl mr-2">📉</span>Vê o faturamento <strong class="text-white">estagnado</strong>, dependendo apenas de indicação e do boca a boca, enquanto os concorrentes crescem online.</p>
+                    </div>
+                    <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                         <p><span class="text-2xl mr-2">💸</span>Já <strong class="text-white">queimou dinheiro</strong> impulsionando posts ou em anúncios que só trouxeram cliques, mas nenhuma venda de verdade.</p>
+                    </div>
+                    <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                         <p><span class="text-2xl mr-2">📦</span>Fica com <strong class="text-white">ansiedade</strong> ao ver o estoque parado e sente que seu produto, que é bom, está invisível para o mundo.</p>
+                    </div>
+                     <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                         <p><span class="text-2xl mr-2">🤔</span>Não entende as métricas, se sente <strong class="text-white">perdido em relatórios</strong> e não sabe dizer se os anúncios estão realmente dando lucro.</p>
+                    </div>
+                     <div class="p-6 bg-gray-900/50 border border-gray-800 rounded-lg">
+                         <p><span class="text-2xl mr-2">🎯</span>Quer ter <strong class="text-white">previsibilidade e controle</strong> sobre as vendas, sabendo exatamente como investir para ter retorno e escalar o negócio.</p>
+                    </div>
+                </div>
+                <p class="mt-10 max-w-2xl mx-auto text-gray-400">Se você se identificou, saiba que o problema não é o seu produto. É a falta de um método estratégico de aquisição de clientes.</p>
+            </div>
+        </section>
+
+        <!-- ===== Value Proposition / Cost Section ===== -->
+        <section class="py-20 bg-gray-900/30">
+            <div class="container mx-auto px-6 reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">O custo de continuar sem um método claro é alto demais.</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400">Veja o que você já está perdendo por não ter uma estratégia de tráfego que funciona.</p>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Path 1: Bad Agency -->
+                    <div class="p-8 bg-gray-900 border border-red-500/20 rounded-xl">
+                        <h3 class="text-xl font-bold text-red-400">1. Contratar uma Agência Medíocre</h3>
+                        <p class="my-4 text-gray-400">Pagar uma mensalidade para uma equipe que não entende do seu negócio.</p>
+                        <p class="text-3xl font-bold text-white">> R$ 2.500,00/mês</p>
+                        <p class="text-sm text-gray-500 mb-6">(Fora o investimento em anúncios)</p>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Relatórios confusos e falta de resultados.</li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Nenhuma autonomia sobre suas campanhas.</li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Sentimento de estar sendo enrolada.</li>
+                        </ul>
+                    </div>
+                    <!-- Path 2: Trial and Error -->
+                     <div class="p-8 bg-gray-900 border border-yellow-500/20 rounded-xl">
+                        <h3 class="text-xl font-bold text-yellow-400">2. Continuar "Testando" Sozinha</h3>
+                        <p class="my-4 text-gray-400">Impulsionar posts e criar campanhas sem estratégia, na base da sorte.</p>
+                        <p class="text-3xl font-bold text-white">Incalculável</p>
+                        <p class="text-sm text-gray-500 mb-6">Em dinheiro, tempo e estoque parado</p>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Queimar dinheiro com anúncios ineficazes.</li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Frustração, estresse e ansiedade.</li>
+                            <li class="flex items-start"><span class="mr-2 mt-1">❌</span>Ver a concorrência dominar o mercado.</li>
+                        </ul>
+                    </div>
+                    <!-- Path 3: The Smart Way (Our Course) -->
+                     <div class="p-8 bg-gray-900 border-2 border-green-500/50 rounded-xl">
+                        <h3 class="text-xl font-bold text-green-400">3. O Método Prático com IA</h3>
+                        <p class="my-4 text-gray-400">Assumir o controle com um passo a passo para criar e gerenciar anúncios que vendem.</p>
+                        <p class="text-3xl font-bold text-white">R$ 97</p>
+                        <p class="text-sm text-gray-500 mb-6">Acesso vitalício, pagamento único</p>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li class="flex items-start"><span class="text-green-400 mr-2 mt-1">✔</span>Método validado para escalar vendas.</li>
+                            <li class="flex items-start"><span class="text-green-400 mr-2 mt-1">✔</span>Usa IA para acelerar 90% do trabalho.</li>
+                            <li class="flex items-start"><span class="text-green-400 mr-2 mt-1">✔</span>Autonomia e controle total do seu marketing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== Modules Section ===== -->
+        <section id="modulos" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">O passo a passo para escalar suas vendas</h2>
+                    <p class="mt-4 max-w-xl mx-auto text-gray-400">Um método validado, do zero à sua máquina de aquisição de clientes.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- Module 1 -->
+                    <div class="reveal p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start space-x-6">
+                        <div class="text-3xl font-extrabold text-indigo-400">01</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">O Mapa do Tesouro</h3>
+                            <p class="mt-1 text-gray-400">Defina com clareza para quem você vai vender e o que vai oferecer, usando IA para criar o perfil do seu cliente ideal e uma oferta irresistível em minutos.</p>
+                        </div>
+                    </div>
+                    <!-- Module 2 -->
+                    <div class="reveal p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start space-x-6">
+                        <div class="text-3xl font-extrabold text-indigo-400">02</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">A Oficina Criativa com IA</h3>
+                            <p class="mt-1 text-gray-400">Crie anúncios que vendem sem precisar aparecer. Aprenda os métodos RETINA e GCC e use a IA como sua equipe de produção para gerar imagens, vídeos e narrações.</p>
+                        </div>
+                    </div>
+                    <!-- Module 3 -->
+                    <div class="reveal p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start space-x-6">
+                        <div class="text-3xl font-extrabold text-indigo-400">03</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Suas Primeiras Campanhas Seguras</h3>
+                            <p class="mt-1 text-gray-400">Coloque seus anúncios no ar com segurança no Meta (Instagram) e no Google. Aprenda a começar com pouco orçamento, a encontrar públicos super quentes e a criar campanhas práticas.</p>
+                        </div>
+                    </div>
+                     <!-- Module 4 -->
+                    <div class="reveal p-6 bg-gray-900/50 border border-gray-800 rounded-xl flex items-start space-x-6">
+                        <div class="text-3xl font-extrabold text-indigo-400">04</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Automação e Escala</h3>
+                            <p class="mt-1 text-gray-400">Crie a sua máquina de vendas. Capture contatos com iscas digitais, converta com sequências de e-mails e remarketing, e crie picos de vendas com lançamentos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Me Section -->
+        <section id="author" class="py-20 bg-gray-900/30">
+            <div class="container mx-auto px-6 max-w-4xl flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3 text-center reveal">
+                    <img src="https://placehold.co/300x300/111827/A855F7?text=Eu" alt="Foto do Instrutor" class="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto shadow-2xl border-4 border-gray-700">
+                </div>
+                <div class="md:w-2/3 reveal">
+                    <h2 class="text-3xl font-bold text-white">Eu sei como é ter um bom produto e não saber como vendê-lo.</h2>
+                    <h3 class="text-xl font-bold mt-1 text-gray-300">Meu nome é [Seu Nome]</h3>
+                    <p class="mt-4 text-gray-400">...e por anos eu ajudei negócios como o seu a saírem da estagnação. Eu vi de perto a frustração de empresários que tinham produtos incríveis, mas que se sentiam invisíveis no mundo digital, reféns de agências que não entregavam resultados.</p>
+                    <p class="mt-2 text-gray-400">Cansado de ver tanto potencial desperdiçado, eu desenvolvi um método. Um passo a passo prático que usa a inteligência artificial não como um truque, mas como uma ferramenta estratégica para criar anúncios que realmente vendem.</p>
+                    <p class="mt-2 font-bold text-indigo-300">Minha missão é entregar essa estratégia nas suas mãos. Quero te dar a autonomia e o conhecimento para que você nunca mais dependa de terceiros para escalar o seu negócio e finalmente colha os frutos que o seu trabalho merece.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===== Pricing Section ===== -->
+        <section id="pricing" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Sua Oferta Irresistível</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-gray-400">O investimento para assumir o controle do seu negócio com acesso a um arsenal completo.</p>
+                </div>
+                <div class="flex justify-center">
+                    <div class="reveal w-full max-w-md p-8 bg-gray-900 rounded-2xl relative highlighted-plan">
+                         <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Oferta por Tempo Limitado</span>
+                        <h3 class="text-2xl font-bold text-white">Acesso Completo ao Método Prático</h3>
+                        
+                        <div class="my-8 text-left bg-gray-900/50 border border-gray-700 p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-2">Tudo que você recebe hoje:</h4>
+                            <ul class="space-y-3 text-gray-300">
+                                <li class="flex justify-between items-center"><span><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-indigo-400 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>Curso Tráfego Pago com IA</span> <span class="text-gray-500 text-sm"><s>R$ 497</s></span></li>
+                                <li class="flex justify-between items-center"><span><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-400 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg><b class="text-white">Bônus #1:</b> Arsenal de IAs</span> <span class="text-gray-500 text-sm"><s>R$ 297</s></span></li>
+                                <li class="flex justify-between items-center"><span><svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-400 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg><b class="text-white">Bônus #2:</b> Livro de Prompts</span> <span class="text-gray-500 text-sm"><s>R$ 197</s></span></li>
+                            </ul>
+                            <div class="border-t border-gray-700 mt-4 pt-4 flex justify-between items-center">
+                                <span class="font-bold text-white">Valor Total:</span>
+                                <span class="font-bold text-red-500 text-lg"><s>R$ 991,00</s></span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-400">Por Apenas:</p>
+                        <p class="text-5xl font-extrabold text-white">R$ 97<span class="text-base font-medium text-gray-400"> ou 12x de R$9,74</span></p>
+                        <a href="#" class="mt-8 block w-full text-center px-6 py-4 font-semibold text-white rounded-lg cta-button text-lg">Quero assumir o controle das minhas vendas</a>
+                    </div>
+                </div>
+                <!-- Guarantee -->
+                <div class="reveal max-w-md mx-auto mt-8 flex items-center gap-4 p-4 bg-gray-900/50 border border-gray-800 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <div>
+                        <h4 class="font-bold text-white">Sua Satisfação Garantida ou Seu Dinheiro de Volta</h4>
+                        <p class="text-sm text-gray-400">Seu risco é ZERO. Você tem 7 dias para acessar o curso e se, por qualquer motivo, não for para você, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== FAQ / Objection Handling Section ===== -->
+        <section class="py-20 bg-gray-900/30">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Suas últimas dúvidas, respondidas.</h2>
+                    <p class="mt-4 text-gray-400">É normal ter perguntas. Aqui estão as respostas diretas para que você tome a melhor decisão.</p>
+                </div>
+                <div class="space-y-4 reveal">
+                    <div x-data="{ open: false }" class="p-4 bg-gray-900 border border-gray-800 rounded-lg">
+                        <button @click="open = !open" class="font-semibold w-full flex justify-between items-center text-left">
+                            <span>"Já investi em anúncios e não tive retorno. Por que agora seria diferente?"</span>
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                            <svg x-show="open" style="display:none;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                        </button>
+                        <div x-show="open" x-transition style="display:none;" class="mt-3 pt-3 border-t border-gray-700 text-gray-400">
+                            <p>Porque agora você não vai "apertar botões", vai aplicar um <strong class="text-white">método</strong>. A maioria dos anúncios falha por falta de estratégia, não por causa da ferramenta. Nós vamos te ensinar a base: mapear o cliente certo, criar uma oferta forte e só então criar o anúncio. Isso muda completamente o jogo e te protege de queimar dinheiro.</p>
+                        </div>
+                    </div>
+                    <div x-data="{ open: false }" class="p-4 bg-gray-900 border border-gray-800 rounded-lg">
+                        <button @click="open = !open" class="font-semibold w-full flex justify-between items-center text-left">
+                            <span>"Não tenho tempo para aprender tudo isso do zero."</span>
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                            <svg x-show="open" style="display:none;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                        </button>
+                        <div x-show="open" x-transition style="display:none;" class="mt-3 pt-3 border-t border-gray-700 text-gray-400">
+                            <p>Este curso foi desenhado exatamente para quem não tem tempo a perder. Por isso usamos IA: ela faz 90% do trabalho pesado. Com nossos prompts prontos, você cria em minutos o que levaria horas. O método é um atalho. Você investe algumas horas agora para economizar centenas de horas (e milhares de reais) no futuro.</p>
+                        </div>
+                    </div>
+                     <div x-data="{ open: false }" class="p-4 bg-gray-900 border border-gray-800 rounded-lg">
+                        <button @click="open = !open" class="font-semibold w-full flex justify-between items-center text-left">
+                            <span>"E se o meu negócio for pequeno ou meu produto não for conhecido?"</span>
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                            <svg x-show="open" style="display:none;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                        </button>
+                        <div x-show="open" x-transition style="display:none;" class="mt-3 pt-3 border-t border-gray-700 text-gray-400">
+                           <p>O tráfego pago é a ferramenta mais poderosa justamente para isso: tornar o desconhecido, desejado. Você não precisa ser uma grande marca. Você aprenderá a encontrar o público exato que tem o problema que seu produto resolve e a colocar sua mensagem na frente deles. É assim que negócios pequenos se tornam grandes.</p>
+                        </div>
+                    </div>
+                    <div x-data="{ open: false }" class="p-4 bg-gray-900 border border-gray-800 rounded-lg">
+                        <button @click="open = !open" class="font-semibold w-full flex justify-between items-center text-left">
+                            <span>"Preciso ser criativo ou um gênio da tecnologia?"</span>
+                            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                            <svg x-show="open" style="display:none;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                        </button>
+                        <div x-show="open" x-transition style="display:none;" class="mt-3 pt-3 border-t border-gray-700 text-gray-400">
+                           <p>Não. Você precisa de um método e de ferramentas. Nós te entregamos os dois. A IA será sua equipe criativa e o curso será seu mapa. Sua única tarefa é seguir o passo a passo. A era em que era preciso ser um "artista" ou "programador" para ter sucesso no digital acabou.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <a href="#" class="text-xl font-bold text-white">Tráfego Pago com IA</a>
+                <p class="text-sm text-gray-500 mt-1">&copy; 2025 Seus Direitos Reservados.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition">Termos de Uso</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple scroll-reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const elementsToReveal = document.querySelectorAll('.reveal');
+        elementsToReveal.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
